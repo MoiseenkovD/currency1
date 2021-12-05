@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Table{% endblock title %}
+
+{% block content %}
+
+    <a href="/rate/create/">Create rate</a>
+    <br>
+    {% for rate in rates %}
+        Id: {{ rate.id }}
+        Sale: {{ rate.sale }}
+        Buy: {{ rate.buy }}
+        Type: {{ rate.type }}
+        Created: {{ rate.created }}
+        <a href="/rate/details/{{ rate.id }}/">Details</a>
+        <a href="/rate/update/{{ rate.id }}/">Edit</a>
+        <a href="/rate/delete/{{ rate.id }}/">Delete</a>
+        </br>
+    {% endfor %}
+
+{% endblock content %}
