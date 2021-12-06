@@ -10,7 +10,7 @@
         Id: {{ rate.id }}
         Sale: {{ rate.sale }}
         Buy: {{ rate.buy }}
-        Type: {{ rate.type }}
+        Type: {{ rate.get_type_display }}
         Created: {{ rate.created }}
         <a href="{% url 'currency:rate-details' rate.id %}">Details</a>
         <a href="{% url 'currency:rate-update' rate.id %}">Edit</a>
