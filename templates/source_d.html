@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete Source</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<form method="post" action="/api/source/delete">
-    <input type="number" name="id" placeholder="id">
-    <button type="submit">delete</button>
-</form>
+{% block title %}Delete Source{% endblock title %}
 
+{% block content %}
 
-</body>
-</html>
+    <p>are u sure want to delete source with id {{ object.id }}?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+
+{% endblock content %}

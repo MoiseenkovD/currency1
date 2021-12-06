@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Source Details{% endblock title %}
+
+{% block content %}
+
+    Id: {{ source.id }} <br>
+    source_url: {{ source.source_url }} <br>
+    name: {{ source.name }} <br>
+    phone: {{ source.phone }} <br>
+
+    <br>
+
+    <a href="{% url 'currency:source-list' %}">back to table</a>
+
+{% endblock content %}
