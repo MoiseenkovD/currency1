@@ -12,12 +12,12 @@ from currency.views import (
     SourceUpdateView,
     SourceDeleteView,
     SourceDetailsView,
+    ContactUsCreateView,
 )
 
 app_name = 'currency'
 
 urlpatterns = [
-    path('contacts/us', contacts.ContactsApi.as_view()),
     path('rate/list/', RateListView.as_view(), name='rate-list'),
     path('rate/create/', RateCreateView.as_view(), name='rate-create'),
     path('rate/update/<int:pk>/', RateUpdateView.as_view(), name='rate-update'),
@@ -28,4 +28,5 @@ urlpatterns = [
     path('source/update/<int:pk>/', SourceUpdateView.as_view(), name='source-update'),
     path('source/delete/<int:pk>/', SourceDeleteView.as_view(), name='source-delete'),
     path('source/details/<int:pk>/', SourceDetailsView.as_view(), name='source-details'),
+    path('contact-us/create', ContactUsCreateView.as_view(), name='contactus-create'),
 ]
