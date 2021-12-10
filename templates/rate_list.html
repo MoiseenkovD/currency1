@@ -12,9 +12,13 @@
         Buy: {{ rate.buy }}
         Type: {{ rate.get_type_display }}
         Created: {{ rate.created }}
+    {% if request.user.is_authenticated %}
         <a href="{% url 'currency:rate-details' rate.id %}">Details</a>
+    {% endif %}
+    {% if request.user.is_superuser %}
         <a href="{% url 'currency:rate-update' rate.id %}">Edit</a>
         <a href="{% url 'currency:rate-delete' rate.id %}">Delete</a>
+    {% endif %}
         <br>
     {% endfor %}
 
