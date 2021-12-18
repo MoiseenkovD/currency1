@@ -7,11 +7,5 @@ import uuid
 
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
     email = models.EmailField('email address', blank=True, unique=True)
-
-    # def save(self, *args, **kwargs):
-    #     if not self.username:
-    #         self.username = str(uuid.uuid4())
-    #
-    #     super().save(*args, **kwargs)

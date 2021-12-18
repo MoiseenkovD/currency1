@@ -12,7 +12,7 @@ class Rate(models.Model):
     sale = models.DecimalField(max_digits=6, decimal_places=2)
     created = models.DateTimeField(auto_now_add=True)
     type = models.PositiveSmallIntegerField(choices=mch.TYPE_CHOICES, default=mch.TYPE_USD)
-    source = models.CharField(max_length=25)
+    source = models.ForeignKey('currency.Source', on_delete=models.CASCADE)
 
 
 class Source(models.Model):
@@ -23,6 +23,8 @@ class Source(models.Model):
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
 
 # class SourceSerializer(serializers.ModelSerializer):
 #     class Meta:
