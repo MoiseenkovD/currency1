@@ -1,26 +1,79 @@
-<p>
-  </br>
-    <a href="/" class="btn btn-success">main page</a> </br> </br>
-    <a href="{% url 'currency:rate-list' %}" class="btn btn-success">Rates</a> </br> </br>
-    <a href="{% url 'currency:source-list' %}" class="btn btn-success">Source</a>
-    </br>
-    </br>
-    {% if request.user.is_authenticated %}
-      Welcome: {{ request.user.username }}
-      </br>
-      <a href="{% url 'currency:profile' %}">My Profile</a>
-      </br>
-      </br>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'account:signup' %}">Sign Up</a>
-        </br>
-        </br>
-        <a href="{% url 'login' %}" class="btn btn-success">Login</a>
-        </br>
-        </br>
-        <a href="{% url 'password_reset' %}">Forgot password</a>
-        </br>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    {% endif %}
-</p>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a href="/" class="nav-link">main page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'currency:rate-list' %}">Rates</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'currency:contactus-create' %}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'currency:source-list' %}" class="nav-link">Source</a>
+            </li>
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:profile' %}">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account:signup' %}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+{##}
+{#<p>#}
+{##}
+{#  </br>#}
+{#    <a href="/" class="btn btn-success">main page</a> </br> </br>#}
+{#    <a href="{% url 'currency:rate-list' %}" class="btn btn-success">Rates</a> </br> </br>#}
+{#    <a href="{% url 'currency:source-list' %}" class="btn btn-success">Source</a>#}
+{#    </br>#}
+{#    </br>#}
+
+
+{#    {% if request.user.is_authenticated %}#}
+{#      Welcome: {{ request.user.username }}#}
+{#      </br>#}
+{#      <a href="{% url 'account:profile' %}">My Profile</a>#}
+{#      </br>#}
+{#      </br>#}
+{#        <a href="{% url 'logout' %}">Logout</a>#}
+{#    {% else %}#}
+{#        <a href="{% url 'account:signup' %}">Sign Up</a>#}
+{#        </br>#}
+{#        </br>#}
+{#        <a href="{% url 'login' %}" class="btn btn-success">Login</a>#}
+{#        </br>#}
+{#        </br>#}
+{#        <a href="{% url 'password_reset' %}">Forgot password</a>#}
+{#        </br>#}
+{##}
+{#    {% endif %}#}
+{#</p>#}

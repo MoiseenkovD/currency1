@@ -121,19 +121,6 @@ class ContactUsCreateView(CreateView):
         return redirect
 
 
-class ProfileView(LoginRequiredMixin, UpdateView):
-    # model = get_user_model()
-    queryset = get_user_model().objects.all()
-    success_url = reverse_lazy('main')
-    template_name = 'profile.html'
-    fields = (
-        'first_name',
-        'last_name'
-    )
-
-    def get_object(self, queryset=None):
-        return self.request.user
-
 
 
 

@@ -13,7 +13,6 @@ from currency.views import (
     SourceDeleteView,
     SourceDetailsView,
     ContactUsCreateView,
-    ProfileView,
 )
 
 app_name = 'currency'
@@ -32,6 +31,4 @@ urlpatterns = [
     path('source/details/<int:pk>/', SourceDetailsView.as_view(), name='source-details'),
 
     path('contact-us/create', ContactUsCreateView.as_view(), name='contactus-create'),
-
-    path('profile/', ProfileView.as_view(), name='profile'),
 ]

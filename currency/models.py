@@ -22,6 +22,7 @@ class Source(models.Model):
     source_url = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
+    logo = models.FileField(upload_to='media/logo', default=None, null=True, blank=True)
 
     def __str__(self):
         return self.name
