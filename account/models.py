@@ -15,6 +15,7 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     email = models.EmailField('email address', blank=True, unique=True)
+    phone = models.CharField(max_length=34, default=None, null=True, blank=True)
     avatar = models.FileField(upload_to=avatar_upload_to, default=None, null=True, blank=True)
 
     @property
@@ -22,3 +23,6 @@ class User(AbstractUser):
         if self.avatar:
             return self.avatar.url
         return static('images/anonymous-avatar.jpeg')
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)

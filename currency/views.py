@@ -3,7 +3,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail import send_mail
 from django.shortcuts import render
 from django.views import View
+from django_filters.views import FilterView
 
+from currency.filters import RateFilter
 from currency.models import Source, Rate, ContactUs
 from currency.forms import RateForm, SourceForm
 from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
@@ -11,9 +13,20 @@ from django.urls import reverse_lazy
 from django.conf import settings
 
 
-class RateListView(ListView):
+class RateListView(FilterView):
+    paginate_by = 5
     queryset = Rate.objects.all().select_related('source')
+    filterset_class = RateFilter
     template_name = 'rate_list.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['pagination_filter'] = "&".join(
+            f"{key}={value}"
+            for key, value in self.request.GET.items()
+            if key != 'page'
+        )
+        return context
 
 
 class RateCreateView(CreateView):
