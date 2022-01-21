@@ -1,6 +1,5 @@
 import currency
 from currency import urls
-from currency.api import contacts
 
 from django.contrib import admin
 from django.urls import path, include
@@ -9,17 +8,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from currency.views import (
-    RateListView,
-    RateCreateView,
-    RateUpdateView,
-    RateDeleteView,
-    RateDetailsView,
     main,
     SourceListView,
-    SourceCreateView,
-    SourceUpdateView,
-    SourceDeleteView,
-    SourceDetailsView,
 )
 
 urlpatterns = [
@@ -28,7 +18,8 @@ urlpatterns = [
     path('', main, name='main'),
     path('source/list/', SourceListView.as_view()),
     path('currency/', include('currency.urls')),
-    path('account/', include('account.urls'))
+    path('account/', include('account.urls')),
+    path('api/v1/', include('api.v1.urls'))
 ]
 
 urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
