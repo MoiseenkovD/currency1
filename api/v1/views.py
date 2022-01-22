@@ -46,7 +46,6 @@ class ContactUsViewSet(viewsets.ModelViewSet):
     ordering_fields = ['id', 'email_to']
     filterset_fields = ['email_to', ]
 
-
     def perform_create(self, serializer):
         super().perform_create(serializer)
         subject = serializer.data['subject']
