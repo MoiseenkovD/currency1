@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Source</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<form method="post" action="/api/source/create">
-    <input type="text" name="source_url" placeholder="source_url">
-    <input type="text" name="name" placeholder="name">
-    <input type="text" name="phone" placeholder="phone">
-    <button type="submit">save</button>
-</form>
+{% block title %}Create Source{% endblock title %}
 
-</body>
-</html>
+{% block content %}
+
+    Create Source Form
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock content %}
