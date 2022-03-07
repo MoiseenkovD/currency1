@@ -48,9 +48,12 @@ admin.site.register(Source, SourceAdmin)
 class ContactUsAdmin(admin.ModelAdmin):
     list_display = (
         'id',
-        'email_from',
+        'created',
+        'name',
+        'reply_to',
         'subject',
-        'message',
+        'body',
+        'raw_content',
     )
 
     def has_add_permission(self, request):

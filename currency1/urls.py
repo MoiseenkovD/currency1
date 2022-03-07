@@ -25,3 +25,5 @@ urlpatterns = [
     path('source/list/', SourceListView.as_view()),
     path('currency/', include(currency.urls))
 ]
+
+urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
