@@ -1,4 +1,3 @@
-from currency.api import contacts
 from django.urls import path
 from currency.views import (
     RateListView,
