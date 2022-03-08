@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'currency',
-    'silk'
+    'account',
+    'silk',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +143,11 @@ EMAIL_HOST_PASSWORD = '111333555777999'
 DEFAULT_FROM_EMAIL = 'dantest387@gmail.com'
 
 
+DOMAIN = 'localhost:8000'
+HTTP_SCHEMA = 'http'
+
+
 LOGIN_REDIRECT_URL = reverse_lazy('main')
 LOGOUT_REDIRECT_URL = reverse_lazy('main')
 LOGIN_URL = reverse_lazy('login')
+AUTH_USER_MODEL = 'account.User'

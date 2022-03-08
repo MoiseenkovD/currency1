@@ -24,7 +24,8 @@ urlpatterns = [
     path('auth/', include('django.contrib.auth.urls')),
     path('', main, name='main'),
     path('source/list/', SourceListView.as_view()),
-    path('currency/', include(currency.urls))
+    path('currency/', include('currency.urls')),
+    path('account/', include('account.urls'))
 ]
 
 urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
