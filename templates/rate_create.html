@@ -4,11 +4,13 @@
 
 {% block content %}
 
+  {% load crispy_forms_tags %}
+
     Create Rate Form
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         <button type="submit">Submit</button>
     </form>
 
