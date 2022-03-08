@@ -1,4 +1,5 @@
 from django.db import models
+from django.templatetags.static import static
 from rest_framework import serializers
 
 from currency import model_choices as mch
@@ -15,17 +16,28 @@ class Rate(models.Model):
     source = models.ForeignKey('currency.Source', on_delete=models.CASCADE)
 
 
+def logo_upload_to(instance, filename):
+    return f'logo/{instance.id}/{filename}'
+
+
 class Source(models.Model):
     class Meta:
         db_table = "source"
 
     source_url = models.CharField(max_length=255)
+    code_name = models.CharField(max_length=64, unique=True)
     name = models.CharField(max_length=255)
     phone = models.CharField(max_length=255)
-    logo = models.FileField(upload_to='media/logo', default=None, null=True, blank=True)
+    logo = models.FileField(upload_to='logo/', default=None, null=True, blank=True)
 
     def __str__(self):
         return self.name
+
+    @property
+    def logo_url(self):
+        if self.logo:
+            return self.logo.url
+
 
 # class SourceSerializer(serializers.ModelSerializer):
 #     class Meta:

@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from celery.schedules import crontab
 from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +44,11 @@ INSTALLED_APPS = [
     'account',
     'silk',
     'crispy_forms',
+    'django_filters',
 ]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -159,3 +164,14 @@ LOGIN_REDIRECT_URL = reverse_lazy('main')
 LOGOUT_REDIRECT_URL = reverse_lazy('main')
 LOGIN_URL = reverse_lazy('login')
 AUTH_USER_MODEL = 'account.User'
+
+CELERY_BROKER_URL = 'amqp://localhost'
+
+
+CELERY_BEAT_SCHEDULE = {
+    'parse_privatbank': {
+        'task': 'currency.tasks.parse_privatbank',
+        'schedule': crontab(minute='*/1'),
+        # 'schedule': crontab(minute='*/15'),
+    },
+}

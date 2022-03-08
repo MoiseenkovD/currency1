@@ -31,6 +31,7 @@ class UserSignUpForm(forms.ModelForm):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data['password1'])
         user.is_active = False
+        user.email = user.email.lower()
         user.username = str(uuid.uuid4())
         user.save()
         self._send_email()
