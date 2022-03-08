@@ -14,7 +14,7 @@ class UserSignUpForm(forms.ModelForm):
 
     class Meta:
         model = get_user_model()
-        fields = ( 
+        fields = (
             'email',
             'password1',
             'password2',
@@ -47,6 +47,6 @@ class UserSignUpForm(forms.ModelForm):
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
-            ['danikmoiseenkov1@gmail.com'],
+            [self.instance.email],
             fail_silently=False,
         )

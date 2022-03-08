@@ -12,6 +12,7 @@
         Buy: {{ rate.buy }}
         Type: {{ rate.get_type_display }}
         Created: {{ rate.created }}
+        Source: {{ rate.source }}
     {% if request.user.is_authenticated %}
         <a href="{% url 'currency:rate-details' rate.id %}">Details</a>
     {% endif %}
