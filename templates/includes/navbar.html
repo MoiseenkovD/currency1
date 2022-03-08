@@ -3,4 +3,24 @@
     <a href="/" class="btn btn-success">main page</a> </br> </br>
     <a href="{% url 'currency:rate-list' %}" class="btn btn-success">Rates</a> </br> </br>
     <a href="{% url 'currency:source-list' %}" class="btn btn-success">Source</a>
+    </br>
+    </br>
+    {% if request.user.is_authenticated %}
+      Welcome: {{ request.user.username }}
+      </br>
+      <a href="{% url 'currency:profile' %}">My Profile</a>
+      </br>
+      </br>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="#">Sign Up</a>
+        </br>
+        </br>
+        <a href="{% url 'login' %}" class="btn btn-success">Login</a>
+        </br>
+        </br>
+        <a href="{% url 'password_reset' %}">Forgot password</a>
+        </br>
+
+    {% endif %}
 </p>

@@ -21,6 +21,7 @@ from currency.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', include('django.contrib.auth.urls')),
     path('', main, name='main'),
     path('source/list/', SourceListView.as_view()),
     path('currency/', include(currency.urls))
